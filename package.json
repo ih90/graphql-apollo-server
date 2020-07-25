@@ -1,0 +1,39 @@
+{
+  "name": "graphql-apollo-server",
+  "version": "1.0.0",
+  "description": "React internship backend application",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Horatiu Istovan",
+  "scripts": {
+    "start": "nodemon --exec babel-node server/server.js",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "seed": "node_modules/.bin/sequelize db:seed:all",
+    "undo-all": "node_modules/.bin/sequelize db:migrate:undo:all"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "nodemon": "^1.19.0",
+    "sequelize-cli": "^3.2.0"
+  },
+  "dependencies": {
+    "apollo-server": "^2.5.0",
+    "apollo-server-express": "^2.16.0",
+    "btoa": "^1.2.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "graphql": "^14.3.1",
+    "graphql-tools": "^4.0.5",
+    "lodash": "^4.17.11",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6"
+  }
+}
