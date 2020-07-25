@@ -13,16 +13,16 @@ yarn : run `brew install yarn`
 
 1.MySql 
 
-installation link: [MySql Instalation link](https://dev.mysql.com/doc/mysql-osx-excerpt/5.7/en/osx-installation-pkg.html)
+  installation link: [MySql Instalation link](https://dev.mysql.com/doc/mysql-osx-excerpt/5.7/en/osx-installation-pkg.html)
 
-2.  Create a new database
-Database name: internship
-user : root
-Password: internship2020
-3. Run migrations
-Run command node_modules/.bin/sequelize db:migrate to create DB tables;
-Run command node_modules/.bin/sequelize db:seed:all to populate DB with initial values;
-To reset DB run node_modules/.bin/sequelize db:migrate:undo:all and run steps 2, 3 again;
+2.Create a new database
+    Database name: internship
+    user : root
+    Password: internship2020
+3.Run migrations
+    Run command node_modules/.bin/sequelize db:migrate to create DB tables;
+    Run command node_modules/.bin/sequelize db:seed:all to populate DB with initial values;
+    To reset DB run node_modules/.bin/sequelize db:migrate:undo:all and run steps 2, 3 again;
 
 For more information regarding migrations and seeds visit [Sequelize](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
 
