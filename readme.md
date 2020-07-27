@@ -9,7 +9,7 @@ Make sure you have yarn installed on your machine;
 
 Open the Terminal app and type `brew update`. This updates Homebrew with a list of the latest version of Node.
 node:  `brew install node`
-yarn : run `brew install yarn`
+yarn : `brew install yarn`
 
 1.MySql 
 
