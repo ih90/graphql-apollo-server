@@ -21,7 +21,7 @@ const User = gql`
             lastName: String!
             password: String!
             userRoleId: Int!
-            contactInfoId: Int!
+            contactInfoId: Int
         ): User!
         updateUser(
             id: Int!
