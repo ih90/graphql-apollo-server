@@ -17,6 +17,13 @@ export const getJobBenefits = async () => {
   return results;
 };
 
+export const getJobBenefitsByJobId = async (jobId) => {
+  const connection = await getConnection();
+  const query = 'SELECT * from jobBenefits where jobId = :jobId';
+  const results = await executeSelectWithParams(connection, query, { jobId });
+  return results;
+};
+
 export const updateJobBenefit = async (args) => {
   const connection = await getConnection();
   const updateJobBenefitSql = `UPDATE jobBenefits SET updatedAt=NOW() ${Object.keys(args)

@@ -20,6 +20,13 @@ export const getUserEducations = async () => {
   return results;
 };
 
+export const getUserEducationsByUserId = async (userId) => {
+  const connection = await getConnection();
+  const query = 'SELECT * from userEducations where userId = :userId';
+  const results = await executeSelectWithParams(connection, query, { userId });
+  return results;
+};
+
 export const updateUserEducation = async (args) => {
   const connection = await getConnection();
   const updateUserEducationSql = `UPDATE userEducations SET updatedAt=NOW() ${Object.keys(args)

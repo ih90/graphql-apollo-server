@@ -9,6 +9,9 @@ const User = gql`
         password: String
         userRole: UserRole
         contactInfo: ContactInfo
+        userEducations: [UserEducation]
+        userWorkExperiences: [UserWorkExperience]
+        userSkills: [UserSkill]
     }
     extend type Query {
         user(id: Int!): User!

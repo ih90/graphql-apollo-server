@@ -13,6 +13,13 @@ export const getUserSkillsByIds = async (ids) => {
   return result[0];
 };
 
+export const getUserSkillsByUserId = async (userId) => {
+  const connection = await getConnection();
+  const query = 'SELECT * from userSkills where userId = :userId';
+  const results = await executeSelectWithParams(connection, query, { userId });
+  return results;
+};
+
 export const getUserSkills = async () => {
   const connection = await getConnection();
   const query = 'SELECT * from userSkills';

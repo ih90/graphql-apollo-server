@@ -8,9 +8,10 @@ export const executeQuery = (connection, query, options) => {
 
 export function executeSelectWithParams(connection, query, params, options = {}) {
   const type = Sequelize.QueryTypes.SELECT;
+  const replacements = params;
   try {
     return executeQuery(connection, query.query || query, {
-      params,
+      replacements,
       type,
       ...options,
     });
