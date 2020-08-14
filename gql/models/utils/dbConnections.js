@@ -79,7 +79,7 @@ export function executeDeleteWithParams(connection, query, params, options = {})
 }
 
 const getConnection = () => {
-  const sequalize = new Sequelize('mysql://root:internship2020@127.0.0.1:3306/internship');
+const sequalize = new Sequelize('mysql://root:internship2020@127.0.0.1:3306/internship');
   sequalize
     .authenticate()
     .then(() => {
