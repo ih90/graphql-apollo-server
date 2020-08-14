@@ -20,6 +20,13 @@ export const getUserWorkExperiences = async () => {
   return results;
 };
 
+export const getUserWorkExperiencesByUserId = async (userId) => {
+  const connection = await getConnection();
+  const query = 'SELECT * from userWorkExperiences where userId = :userId';
+  const results = await executeSelectWithParams(connection, query, { userId });
+  return results;
+};
+
 export const updateUserWorkExperience = async (args) => {
   const connection = await getConnection();
   const updateUserWorkExperienceSql = `UPDATE userWorkExperiences SET updatedAt=NOW() ${Object.keys(args)

@@ -17,6 +17,13 @@ export const getJobSkills = async () => {
   return results;
 };
 
+export const getJobSkillsByJobId = async (jobId) => {
+  const connection = await getConnection();
+  const query = 'SELECT * from jobSkills where jobId = :jobId';
+  const results = await executeSelectWithParams(connection, query, { jobId });
+  return results;
+};
+
 export const updateJobSkill = async (args) => {
   const connection = await getConnection();
   const updateJobSkillSql = `UPDATE jobSkills SET updatedAt=NOW() ${Object.keys(args)

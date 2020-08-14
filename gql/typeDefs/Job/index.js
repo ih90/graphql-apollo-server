@@ -7,6 +7,9 @@ const job = gql`
         description: String
         isAvailable: Boolean,
         company: Company
+        jobSkills: [JobSkill]
+        jobRequirements: [JobRequirement]
+        jobBenefits: [JobBenefit]
     }
     extend type Query {
         job(id: Int!): Job!
