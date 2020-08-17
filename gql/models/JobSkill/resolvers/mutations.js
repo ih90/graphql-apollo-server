@@ -8,7 +8,7 @@ export default {
     return getJobSkillsByIds(id);
   },
   updateJobSkill: async (obj, args) => {
-    await updateJobSkill(args.id, args);
+    await updateJobSkill(args);
     return getJobSkillsByIds(args.id);
   },
   deleteJobSkill: async (obj, args) => deleteJobSkillByIds([args.id]),
