@@ -5,8 +5,8 @@ import { getUsersByIds } from '../../User/cdb';
 
 export default {
   UserJobApplication: {
-    job: (app) => getJobsByIds(app.jobId),
-    user: (skill) => getUsersByIds(skill.id),
+    job: (jobApplication) => getJobsByIds(jobApplication.jobId),
+    user: (jobApplication) => getUsersByIds(jobApplication.id),
   },
   Query: queries,
   Mutation: mutations,

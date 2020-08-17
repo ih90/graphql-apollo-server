@@ -8,7 +8,7 @@ export default {
     return getJobRequirementsByIds(id);
   },
   updateJobRequirement: async (obj, args) => {
-    await updateJobRequirement(args.id, args);
+    await updateJobRequirement(args);
     return getJobRequirementsByIds(args.id);
   },
   deleteJobRequirement: async (obj, args) => deleteJobRequirementByIds([args.id]),

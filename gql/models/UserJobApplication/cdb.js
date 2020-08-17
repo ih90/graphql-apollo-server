@@ -22,13 +22,13 @@ export const getUserJobApplications = async () => {
 
 export const updateUserJobApplication = async (args) => {
   const connection = await getConnection();
-  const updateUserWorkExperienceSql = `UPDATE userJobApplications SET updatedAt=NOW() ${Object.keys(args)
+  const updateUserJobApplicationSql = `UPDATE userJobApplications SET updatedAt=NOW() ${Object.keys(args)
     .map((c) => {
       if (c !== 'id') return `\`${c}\`=:${c}`;
       return null;
     })
     .join(', ')} WHERE id= :id`;
-  return executeUpdateWithParams(connection, updateUserWorkExperienceSql, args);
+  return executeUpdateWithParams(connection, updateUserJobApplicationSql, args);
 };
 
 export const createUserJobApplication = async (args) => {
