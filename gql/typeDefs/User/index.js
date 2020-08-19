@@ -12,6 +12,8 @@ const User = gql`
         userEducations: [UserEducation]
         userWorkExperiences: [UserWorkExperience]
         userSkills: [UserSkill]
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         user(id: Int!): User!

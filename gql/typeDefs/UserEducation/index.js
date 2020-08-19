@@ -8,6 +8,8 @@ const userEducation = gql`
         user: User
         startDate: String
         endDate: String
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         userEducation(id: Int!): UserEducation!

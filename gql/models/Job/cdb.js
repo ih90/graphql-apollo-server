@@ -15,7 +15,7 @@ export const getJobsByIds = async (ids) => {
 
 export const getJobs = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from jobs';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from jobs';
   const results = await executeSelect(connection, query);
   return results;
 };

@@ -6,6 +6,8 @@ const jobSkill = gql`
         skill: Skill
         job: Job
         rating: Int
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         jobSkill(id: Int!): JobSkill!

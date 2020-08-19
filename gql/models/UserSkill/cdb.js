@@ -8,21 +8,21 @@ import getConnection, {
 
 export const getUserSkillsByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from userSkills WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userSkills WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getUserSkillsByUserId = async (userId) => {
   const connection = await getConnection();
-  const query = 'SELECT * from userSkills where userId = :userId';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userSkills where userId = :userId';
   const results = await executeSelectWithParams(connection, query, { userId });
   return results;
 };
 
 export const getUserSkills = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from userSkills';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userSkills';
   const results = await executeSelect(connection, query);
   return results;
 };
@@ -41,7 +41,7 @@ export const updateUserSkill = async (args) => {
 export const createUserSkill = async (args) => {
   const connection = await getConnection();
   const createUserWorkExperienceQuery = `
-  INSERT userSkills (updatedAt, ${Object.keys(args)
+  INSERT userSkills (createdAt, ${Object.keys(args)
     .map((c) => `\`${c}\``)
     .join(', ')})
   VALUES (NOW() , ${Object.keys(args)

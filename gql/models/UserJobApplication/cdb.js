@@ -8,14 +8,14 @@ import getConnection, {
 
 export const getUserJobApplicationsByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from userJobApplications WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userJobApplications WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getUserJobApplications = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from userJobApplications';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userJobApplications';
   const results = await executeSelect(connection, query);
   return results;
 };
@@ -34,7 +34,7 @@ export const updateUserJobApplication = async (args) => {
 export const createUserJobApplication = async (args) => {
   const connection = await getConnection();
   const createUserWorkExperienceQuery = `
-  INSERT userJobApplications (updatedAt, ${Object.keys(args)
+  INSERT userJobApplications (createdAt, ${Object.keys(args)
     .map((c) => `\`${c}\``)
     .join(', ')})
   VALUES (NOW() , ${Object.keys(args)

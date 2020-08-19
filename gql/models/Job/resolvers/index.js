@@ -12,6 +12,10 @@ export default {
     jobSkills: job => getJobSkillsByJobId(job.id),
     jobRequirements: job => getJobRequirementsByJobId(job.id),
     jobBenefits: job => getJobBenefitsByJobId(job.id),
+    createdAt: job => {
+      console.log('job', job);
+      return job.createdAt;
+    }
   },
   Query: queries,
   Mutation: mutations,

@@ -6,6 +6,8 @@ const userJobApplications = gql`
         job: Job
         user: User
         isAccepted: Boolean
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         userJobApplication(id: Int!): UserJobApplication!

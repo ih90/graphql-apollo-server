@@ -6,6 +6,8 @@ const Company = gql`
         name: String
         user: User
         contactInfo: ContactInfo
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         company(id: Int!): Company!

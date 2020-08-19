@@ -4,6 +4,8 @@ const skill = gql`
     type Skill {
         id: Int!
         name: String
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         skill(id: Int!): Skill!

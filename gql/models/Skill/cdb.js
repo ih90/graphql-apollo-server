@@ -5,14 +5,14 @@ import getConnection, {
 
 export const getSkillByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from skills WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from skills WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getSkills = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from skills';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from skills';
   const results = await executeSelect(connection, query);
   return results;
 };

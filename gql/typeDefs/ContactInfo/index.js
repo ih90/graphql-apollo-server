@@ -10,6 +10,8 @@ const ContactInfo = gql`
         website: String
         avatarUrl: String
         about: String
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         contactInfo(id: Int!): ContactInfo!

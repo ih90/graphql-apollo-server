@@ -6,6 +6,8 @@ const userSkill = gql`
         user: User
         skill: Skill
         rating: Int
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         userSkill(id: Int!): UserSkill!

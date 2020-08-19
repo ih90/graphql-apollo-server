@@ -10,6 +10,8 @@ const job = gql`
         jobSkills: [JobSkill]
         jobRequirements: [JobRequirement]
         jobBenefits: [JobBenefit]
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         job(id: Int!): Job!

@@ -5,21 +5,21 @@ import getConnection, {
 
 export const getJobSkillsByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from jobSkills WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from jobSkills WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getJobSkills = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from jobSkills';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from jobSkills';
   const results = await executeSelect(connection, query);
   return results;
 };
 
 export const getJobSkillsByJobId = async (jobId) => {
   const connection = await getConnection();
-  const query = 'SELECT * from jobSkills where jobId = :jobId';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from jobSkills where jobId = :jobId';
   const results = await executeSelectWithParams(connection, query, { jobId });
   return results;
 };
@@ -38,7 +38,7 @@ export const updateJobSkill = async (args) => {
 export const createJobSkill = async (args) => {
   const connection = await getConnection();
   const createJobSkillQuery = `
-  INSERT jobSkills (updatedAt, ${Object.keys(args)
+  INSERT jobSkills (createdAt, ${Object.keys(args)
     .map((c) => `\`${c}\``)
     .join(', ')})
   VALUES (NOW() , ${Object.keys(args)

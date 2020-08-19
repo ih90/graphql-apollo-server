@@ -8,14 +8,14 @@ import getConnection, {
 
 export const getContactInfoByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from contactInfos WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from contactInfos WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getContactInfos = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from contactInfos';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from contactInfos';
   const results = await executeSelect(connection, query);
   return results;
 };
@@ -34,7 +34,7 @@ export const updateContactInfo = async (args) => {
 export const createContactInfo = async (args) => {
   const connection = await getConnection();
   const createContactInfoQuery = `
-  INSERT contactInfos (updatedAt, ${Object.keys(args)
+  INSERT contactInfos (createdAt, ${Object.keys(args)
     .map((c) => `\`${c}\``)
     .join(', ')})
   VALUES (NOW() , ${Object.keys(args)

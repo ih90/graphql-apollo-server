@@ -5,6 +5,8 @@ const jobBenefit = gql`
         id: Int!
         name: String
         job: Job
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         jobBenefit(id: Int!): JobBenefit!

@@ -8,6 +8,8 @@ const userWorkExperience = gql`
         user: User
         startDate: String
         endDate: String
+        createdAt: Int!
+        updatedAt: Int!
     }
     extend type Query {
         userWorkExperience(id: Int!): UserWorkExperience!

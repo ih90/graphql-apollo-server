@@ -8,21 +8,21 @@ import getConnection, {
 
 export const getUserEducationByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT * from userEducations WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userEducations WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getUserEducations = async () => {
   const connection = await getConnection();
-  const query = 'SELECT * from userEducations';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userEducations';
   const results = await executeSelect(connection, query);
   return results;
 };
 
 export const getUserEducationsByUserId = async (userId) => {
   const connection = await getConnection();
-  const query = 'SELECT * from userEducations where userId = :userId';
+  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userEducations where userId = :userId';
   const results = await executeSelectWithParams(connection, query, { userId });
   return results;
 };
