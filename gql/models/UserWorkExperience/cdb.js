@@ -8,21 +8,21 @@ import getConnection, {
 
 export const getUserWorkExperiencesByIds = async (ids) => {
   const connection = await getConnection();
-  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences WHERE id IN (${ids})`;
+  const query = `SELECT *, UNIX_TIMESTAMP(startDate) as startDate, UNIX_TIMESTAMP(endDate) as endDate, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences WHERE id IN (${ids})`;
   const result = await executeSelectWithParams(connection, query, { ids });
   return result[0];
 };
 
 export const getUserWorkExperiences = async () => {
   const connection = await getConnection();
-  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences';
+  const query = 'SELECT *, UNIX_TIMESTAMP(startDate) as startDate, UNIX_TIMESTAMP(endDate) as endDate, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences';
   const results = await executeSelect(connection, query);
   return results;
 };
 
 export const getUserWorkExperiencesByUserId = async (userId) => {
   const connection = await getConnection();
-  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences where userId = :userId';
+  const query = 'SELECT *, UNIX_TIMESTAMP(startDate) as startDate, UNIX_TIMESTAMP(endDate) as endDate, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from userWorkExperiences where userId = :userId';
   const results = await executeSelectWithParams(connection, query, { userId });
   return results;
 };
