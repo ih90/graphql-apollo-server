@@ -17,7 +17,7 @@ const User = gql`
     }
     extend type Query {
         user(id: Int!): User!
-        users: [User]
+        users(search: UserSearch): [User]
     }
     extend type Mutation {
         createUser(

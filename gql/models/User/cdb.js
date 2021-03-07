@@ -5,6 +5,8 @@ import getConnection, {
   executeSelectWithParams,
   executeUpdateWithParams,
 } from '../utils/dbConnections';
+import dbFieldMap from './dbFieldMap';
+import searchToSql from '../utils/search';
 
 export const getUsersByIds = async (ids) => {
   const connection = await getConnection();
@@ -13,9 +15,11 @@ export const getUsersByIds = async (ids) => {
   return result[0];
 };
 
-export const getUsers = async () => {
+export const getUsers = async (search = {}) => {
   const connection = await getConnection();
-  const query = 'SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from users';
+  const { sql: where } = await searchToSql(search, dbFieldMap);
+  const whereClause = where ? `WHERE ${where}` : '';
+  const query = `SELECT *, UNIX_TIMESTAMP(createdAt) as createdAt, UNIX_TIMESTAMP(updatedAt) as updatedAt from users ${whereClause}`;
   const results = await executeSelect(connection, query);
   return results;
 };
