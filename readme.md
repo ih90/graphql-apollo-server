@@ -25,9 +25,9 @@ yarn : `brew install yarn`
     
 3.Run migrations
 
-    Run command node_modules/.bin/sequelize db:migrate to create DB tables;
-    Run command node_modules/.bin/sequelize db:seed:all to populate DB with initial values;
-    To reset DB run node_modules/.bin/sequelize db:migrate:undo:all and run steps 2, 3 again;
+    1. Run yarn migrate
+    2. Run yarn seed
+    To reset DB run yarn undo-all and run steps 1, 2 again;
 
 For more information regarding migrations and seeds visit [Sequelize](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
 
