@@ -32,7 +32,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.6",
     "sqlstring": "^2.3.2"
